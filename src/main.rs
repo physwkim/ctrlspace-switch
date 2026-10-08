@@ -9,7 +9,6 @@ mod tap;
 mod tis;
 
 use std::process::exit;
-use std::time::Instant;
 
 const DEFAULT_ENGLISH: &str = "com.apple.keylayout.ABC";
 const DEFAULT_KOREAN: &str = "com.apple.inputmethod.Korean.2SetKorean";
@@ -43,19 +42,12 @@ fn main() {
     let korean_source = resolve(&korean);
 
     let presses = tap::spawn().unwrap_or_else(|e| die(&e));
-    eprintln!("ready: Ctrl+Space toggles {english} <-> {korean}");
     for () in presses {
-        let start = Instant::now();
-        let current = tis::current().id();
-        let (target_id, target) = if current == korean {
-            (&english, &english_source)
+        let target = if tis::current().id() == korean {
+            &english_source
         } else {
-            (&korean, &korean_source)
+            &korean_source
         };
-        let status = target.select();
-        eprintln!(
-            "{current} -> {target_id}: status {status}, {:.1} ms",
-            start.elapsed().as_secs_f64() * 1e3
-        );
+        target.select();
     }
 }

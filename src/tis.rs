@@ -39,9 +39,8 @@ impl InputSource {
         }
     }
 
-    /// Returns the OSStatus of `TISSelectInputSource`.
-    pub fn select(&self) -> i32 {
-        unsafe { TISSelectInputSource(self.0.as_CFTypeRef()) }
+    pub fn select(&self) {
+        unsafe { TISSelectInputSource(self.0.as_CFTypeRef()) };
     }
 }
 

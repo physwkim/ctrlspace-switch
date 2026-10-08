@@ -30,8 +30,7 @@ The default pair is `com.apple.keylayout.ABC` ↔
 ./target/release/ctrlspace-switch
 ```
 
-Your terminal app needs Accessibility permission. Each switch and its latency
-is printed to stderr. Stop with `Ctrl+C`.
+Your terminal app needs Accessibility permission. Stop with `Ctrl+C`.
 
 ## Install (start at login)
 
@@ -65,16 +64,6 @@ is printed to stderr. Stop with `Ctrl+C`.
 
    System Settings → Keyboard → Keyboard Shortcuts → Input Sources →
    turn off "Select the previous input source".
-
-## Logs
-
-```sh
-tail -f ~/Library/Logs/ctrlspace-switch.log
-```
-
-Each switch logs `from -> to: status, ms`. If an occasional slow switch shows
-hundreds of ms here, the input method itself is waking up late, which this
-tool does not address.
 
 ## Updating
 

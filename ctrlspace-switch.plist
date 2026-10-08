@@ -14,7 +14,5 @@
 	<true/>
 	<key>ProcessType</key>
 	<string>Interactive</string>
-	<key>StandardErrorPath</key>
-	<string>/Users/stevek/Library/Logs/ctrlspace-switch.log</string>
 </dict>
 </plist>

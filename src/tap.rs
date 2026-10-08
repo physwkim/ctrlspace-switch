@@ -78,7 +78,6 @@ extern "C" fn callback(
     let state = unsafe { &*(user_info as *const State) };
     match ty {
         TAP_DISABLED_BY_TIMEOUT | TAP_DISABLED_BY_USER_INPUT => {
-            eprintln!("event tap disabled (type {ty:#x}), re-enabling");
             unsafe { CGEventTapEnable(state.port.get(), true) };
             return event;
         }
